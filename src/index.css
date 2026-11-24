@@ -1,0 +1,100 @@
+/* ============================================================
+   index.css - estilos globais (responsivo, mobile-first)
+   ============================================================ */
+:root {
+  --cor-principal: #1d4ed8;
+  --cor-fundo: #f4f6fb;
+  --cor-texto: #1f2937;
+  --cor-erro: #b91c1c;
+  --cor-sucesso: #166534;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
+}
+
+a { color: var(--cor-principal); }
+
+/* Foco visível: ajuda quem navega pelo teclado (Tab) */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* ---------- Cabeçalho e menu ---------- */
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;           /* quebra linha em telas pequenas */
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--cor-principal);
+}
+.logo { display: flex; align-items: center; gap: 0.6rem; margin: 0; font-weight: bold; font-size: 1.15rem; color: #fff; }
+.cabecalho nav { display: flex; gap: 1rem; }
+.cabecalho nav a { color: #fff; padding: 0.25rem 0.5rem; border-radius: 4px; }
+.cabecalho nav a.active { background: rgba(255, 255, 255, 0.25); font-weight: bold; }
+
+/* ---------- Conteúdo ---------- */
+.conteudo { max-width: 1000px; margin: 0 auto; padding: 1rem; }
+.rodape { text-align: center; padding: 1rem; font-size: 0.85rem; }
+
+/* ---------- Filtros ---------- */
+.filtros { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1rem; margin-bottom: 1rem; }
+.linha-busca { display: flex; gap: 0.5rem; }
+.linha-busca input { width: auto; }
+.filtros select { min-width: 200px; }
+.linha-busca input, .filtros select { height: 2.5rem; }
+
+/* ---------- Formulários ---------- */
+label { display: block; font-weight: 600; }
+input, select, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #9ca3af;
+  border-radius: 4px;
+  font: inherit;
+}
+.formulario { display: grid; gap: 1rem; }
+.pagina-estreita { max-width: 480px; margin: 0 auto; }
+.pagina-estreita h1 { text-align: center; }
+
+button {
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 4px;
+  background: var(--cor-principal);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+button.perigo { background: var(--cor-erro); }
+
+/* ---------- Mensagens (carregando / erro / sucesso) ---------- */
+.mensagem { padding: 0.75rem 1rem; border-radius: 4px; background: #e5e7eb; }
+.mensagem.erro { background: #fee2e2; color: var(--cor-erro); }
+.mensagem.sucesso { background: #dcfce7; color: var(--cor-sucesso); }
+
+/* ---------- Grade de cards: 1 coluna no celular, mais colunas em telas maiores ---------- */
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
+.cartao { background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12); }
+.cartao img { width: 100%; height: 160px; object-fit: contain; }
+.cartao h2 { font-size: 1rem; margin: 0.5rem 0 0; }
+.categoria { color: #6b7280; margin: 0.25rem 0; text-transform: capitalize; }
+.preco { font-weight: bold; color: var(--cor-principal); }
+
+/* ---------- Detalhe: coluna no celular, duas colunas em telas largas ---------- */
+.detalhe { display: grid; gap: 1rem; background: #fff; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+.detalhe img { width: 100%; max-width: 320px; margin: 0 auto; }
+@media (min-width: 700px) {
+  .detalhe { grid-template-columns: 320px 1fr; }
+}
